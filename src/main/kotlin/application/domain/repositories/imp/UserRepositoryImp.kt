@@ -1,9 +1,11 @@
 package application.domain.repositories.imp
 
+import application.db.result.toUser
 import application.db.schema.UserSchema
 import application.domain.entity.User
 import application.domain.repositories.UserRepository
 import org.jetbrains.exposed.sql.insert
+import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.koin.core.KoinApplication.Companion.logger
 import java.util.UUID
@@ -25,6 +27,12 @@ class UserRepositoryImp : UserRepository<User> {
     }
 
     override fun findByEmail(email: String): User? {
-        return null
+        var user: User? = null
+        transaction {
+            UserSchema.select { UserSchema.email.eq(email) }.map {
+                user = it.toUser()
+            }
+        }
+        return user
     }
 }

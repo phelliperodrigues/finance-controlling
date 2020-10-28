@@ -4,6 +4,7 @@ import application.domain.build.UserRequestBuild
 import application.domain.repositories.config.RepositoryBase
 import application.domain.repositories.imp.UserRepositoryImp
 import org.junit.jupiter.api.Assertions.assertNotNull
+import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test
 
 class UserRepositoryTest : RepositoryBase() {
@@ -19,12 +20,15 @@ class UserRepositoryTest : RepositoryBase() {
     }
 
     @Test
-    fun `Should return a user by email`(){
+    fun `Should return a user by email`() {
         userRepository.save(userBuild)
-
         val response = userRepository.findByEmail(userBuild.email)
-
         assertNotNull(response)
+    }
 
+    @Test
+    fun `Should dont return a user by email`() {
+        val response = userRepository.findByEmail(userBuild.email)
+        assertNull(response)
     }
 }
