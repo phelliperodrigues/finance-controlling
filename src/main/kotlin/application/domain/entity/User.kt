@@ -1,0 +1,14 @@
+package application.domain.entity
+
+import org.joda.time.DateTime
+import java.util.UUID
+
+data class User(
+    val id: String = UUID.randomUUID().toString(),
+    val email: String,
+    var token: String? = null,
+    val name: String? = null,
+    val password: String? = null,
+    val passwordConfirmation: String? = null,
+    val createDate: DateTime? = null
+)
