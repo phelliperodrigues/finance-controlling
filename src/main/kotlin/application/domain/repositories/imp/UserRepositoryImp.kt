@@ -23,4 +23,8 @@ class UserRepositoryImp : UserRepository<User> {
         logger.info("Save user with success! With ID: $UserSchema.id ")
         entity.copy(id = result[UserSchema.id])
     }
+
+    override fun findByEmail(email: String): User? {
+        return null
+    }
 }

@@ -11,9 +11,20 @@ class UserRepositoryTest : RepositoryBase() {
     private val userBuild = UserRequestBuild.build().toModel()
 
     private val userRepository = UserRepositoryImp()
+
     @Test
     fun `Should save a user`() {
         val response = userRepository.save(userBuild)
         assertNotNull(response)
+    }
+
+    @Test
+    fun `Should return a user by email`(){
+        userRepository.save(userBuild)
+
+        val response = userRepository.findByEmail(userBuild.email)
+
+        assertNotNull(response)
+
     }
 }

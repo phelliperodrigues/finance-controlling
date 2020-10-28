@@ -5,4 +5,5 @@ import application.domain.entity.User
 interface UserRepository<T> {
 
     fun save(entity: User): User?
+    fun findByEmail(email: String): User?
 }
