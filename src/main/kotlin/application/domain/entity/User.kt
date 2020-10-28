@@ -4,7 +4,7 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 data class User(
-    val id: String = UUID.randomUUID().toString(),
+    val id: UUID? = null,
     val email: String,
     var token: String? = null,
     val name: String? = null,

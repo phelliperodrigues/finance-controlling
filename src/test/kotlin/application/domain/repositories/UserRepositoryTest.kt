@@ -11,7 +11,6 @@ class UserRepositoryTest : RepositoryBase() {
     private val userBuild = UserRequestBuild.build().toModel()
 
     private val userRepository = UserRepositoryImp()
-
     @Test
     fun `Should save a user`() {
         val response = userRepository.save(userBuild)

@@ -4,7 +4,7 @@ import org.jetbrains.exposed.sql.Table
 
 object UserSchema : Table() {
     val id = uuid("id").primaryKey()
-    val email = varchar("email", 100)
+    val email = varchar("email", 100).uniqueIndex()
     val token = varchar("token", 3000).nullable()
     val name = varchar("name", 100)
     val password = varchar("password", 200)

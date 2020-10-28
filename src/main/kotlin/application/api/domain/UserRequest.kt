@@ -2,7 +2,6 @@ package application.api.domain
 
 import application.domain.entity.User
 import org.joda.time.DateTime
-import java.util.*
 
 data class UserRequest(
     val id: String? = null,
