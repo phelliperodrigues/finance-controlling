@@ -27,7 +27,7 @@ class UserRepositoryTest : RepositoryBase() {
     }
 
     @Test
-    fun `Should dont return a user by email`() {
+    fun `Should don't return a user by email`() {
         val response = userRepository.findByEmail(userBuild.email)
         assertNull(response)
     }
